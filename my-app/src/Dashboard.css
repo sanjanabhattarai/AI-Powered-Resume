@@ -1,0 +1,206 @@
+/* Root variables */
+:root {
+    --clr-primary: #7380ec;
+    --clr-danger: #ff7782;
+    --clr-success: #41f1b6;
+    --clr-white: #fff;
+    --clr-info-dark: #7d8da1;
+    --clr-info-light: #dce1eb;
+    --clr-dark: #363949;
+    --clr-warning: #ff4edc;
+    --clr-light: rgba(132, 139, 200, 0.18);
+    --clr-primary-variant: #111e88;
+    --clr-dark-variant: #f6f6f9;
+}
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 0;
+    list-style: none;
+    appearance: none;
+}
+
+/* Body styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    font-size: 1rem;
+    user-select: none;
+    overflow: hidden;
+    background: #f6f6f9; /* Updated background color */
+}
+
+/* Container styles */
+.container {
+    display: grid;
+    width: 90%;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 14rem;
+    margin: 0 auto;
+}
+
+/* Main heading styles */
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+/* Sidebar styles */
+aside {
+    height: 100vh;
+    background: linear-gradient(45deg, rgba(60, 179, 113, 0.7), rgba(34, 193, 195, 0.7)); /* Green gradient */
+    display: flex;
+    flex-direction: column;
+}
+
+aside .top {
+    background-color: var(--clr-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+aside .logo {
+    display: flex;
+    gap: 1rem;
+}
+
+aside .logo .danger {
+    color: #bfeba0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Sidebar link styles */
+aside .sidebar {
+    background-color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 4rem);
+    padding-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+aside .sidebar.closed {
+    transform: translateX(-100%);
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    background-color: var(--clr-white);
+    color: var(--clr-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a:hover {
+    background-color: var(--clr-light);
+    border-radius: 5px;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    margin-right: 10px;
+}
+
+/* Toggle text styles */
+aside .sidebar a.toggle-text {
+    background-color: var(--clr-white);
+    color: var(--clr-primary);
+    margin-left: 0;
+    border-right: 5px solid var(--clr-primary);
+}
+
+/* Message count styles */
+aside .sidebar a span.msg_count {
+    background: var(--clr-danger);
+    color: var(--clr-white);
+    padding: 2px 5px;
+    font-size: 11px;
+    border-radius: 50%;
+}
+
+/* Move the "Logout" button to the bottom */
+aside .sidebar a.toggle-text.logout {
+    position: absolute;
+    bottom: 1rem; /* Adjust this value as needed */
+    left: 0;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+}
+
+/* Main section styles */
+main {
+    background-color: var(--clr-dark-variant);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+/* Right section styles */
+.right {
+    background-color: var(--clr-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+/* Close button in sidebar */
+#closeBtn {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--clr-dark);
+}
+
+/* Adding space between sidebar items */
+aside .sidebar a {
+    margin-top: 1rem;
+}
+
+/* Sidebar transition for smooth hide/show */
+.sidebar.closed {
+    display: none;
+}
+
+/* Hide icons in the sidebar when toggled */
+.hide-icons .material-symbols-outlined {
+    display: none;
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 1rem;
+    }
+
+    aside .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        width: 80%;
+        transition: transform 0.3s ease;
+    }
+
+    aside .sidebar.open {
+        transform: translateX(100%);
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
